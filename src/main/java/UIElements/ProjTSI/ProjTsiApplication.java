@@ -16,6 +16,8 @@ public class ProjTsiApplication {
 	private ActorRepository actorRepository ;
 	@Autowired
 	private FilmRepository filmRepository ;
+	@Autowired
+	private FilmActorRepository filmActorRepository ;
 
 	public ProjTsiApplication(ActorRepository ar) {
 		actorRepository = ar;
@@ -63,6 +65,11 @@ public class ProjTsiApplication {
 	@GetMapping("/allfilms")
 	public @ResponseBody Iterable<Film> getAllFilms() {
 		return filmRepository.findAll();
+	}
+
+	@GetMapping("/allAF")
+	public @ResponseBody Iterable<Actor> getAllAF() {
+		return actorRepository.findAllActorsFilms();
 	}
 
 

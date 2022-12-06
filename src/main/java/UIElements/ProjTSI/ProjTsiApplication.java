@@ -1,11 +1,15 @@
 package UIElements.ProjTSI;
 
+import org.apache.commons.collections4.IterableUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+import org.apache.commons.collections4.CollectionUtils;
 
-import java.util.Optional;
+import java.net.FileNameMap;
+import java.util.*;
 
 @SpringBootApplication
 @RestController
@@ -79,13 +83,80 @@ public class ProjTsiApplication {
 	@GetMapping("/allAfromRandomF")
 	public @ResponseBody Iterable<Actor> getActorFromRandomFilm() {
 		long x = filmRepository.count();
-		int fid = (int) (Math.random() * x);
+		int fid = (int) (Math.random() * (x - 1)) + 1;
 		return actorRepository.findActorFromFilm(fid);
 	}
 	@GetMapping("/allFfromRandomA")
 	public @ResponseBody Iterable<Film> getFilmFromRandomActor() {
 		long x = actorRepository.count();
-		int aid = (int) (Math.random() * x);
+		int aid = (int) (Math.random() * (x - 1)) + 1;
 		return filmRepository.findFilmFromActor(aid);
+	}
+
+	// Calculates the bacon number between two arbitrary actors
+	@GetMapping("/distance/{aid1}/{aid2}")
+	public int computeBaconDistance(@PathVariable("aid1") int aid1, @PathVariable("aid2") int aid2) {
+		int distance = 0;
+
+		// We need a list of films from the first actor and an empty list of actors
+		Iterable<Film> searchFilms = filmRepository.findFilmFromActor(aid1);
+		Iterable<Actor> searchActors = Collections.emptySet();
+
+		boolean finished = false;
+		int current_distance = 0;
+		while (!finished) {
+			++ current_distance;
+			// find all actors in the film list
+			searchActors = findAllActorsFromMultiFilms(searchFilms) ;
+
+			// determine if the target actor is in the actor list
+			for (Actor a : searchActors) {
+				if (a.getActorid() == aid2) {
+					finished = true;
+					distance = current_distance;
+				}
+			}
+			// If we didn't find the target actor, remake the film list
+			if (!finished) {
+				searchFilms = findAllFilmsFromMultiActors(searchActors) ;
+			}
+
+			// Condition to ensure while is exited
+			if (current_distance > 50) {
+				finished = true;
+				distance = -1 ;
+			}
+		}
+		return distance ;
+	}
+	public Iterable<Film> findAllFilmsFromMultiActors(Iterable<Actor> listA) {
+		Iterable<Film> retFilms = Collections.emptySet();
+		for (Actor a : listA) {
+			Iterable<Film> addFilms = getFilmFromActor(a.getActorid()) ;
+			retFilms = CollectionUtils.union(retFilms, addFilms) ;
+		}
+		return retFilms;
+	}
+	public Iterable<Actor> findAllActorsFromMultiFilms(Iterable<Film> listF) {
+		Iterable<Actor> retActors = Collections.emptySet();
+		for (Film f : listF) {
+			Iterable<Actor> addActors = getActorFromFilm(f.getFilmid()) ;
+			retActors = CollectionUtils.union(retActors, addActors) ;
+		}
+		return retActors;
+	}
+	@GetMapping("/distanceAll")
+	public @ResponseBody Iterable<String> megaBacon() {
+		List<String> retStrings = new ArrayList<String>();
+		long totalActors = actorRepository.count();
+		for (int actor1 = 1 ; actor1 <= totalActors ; ++actor1) {
+			for (int actor2 = 1 ; actor2 < actor1 ; ++actor2) {
+				String currentEntry = "" + actor1 + " " + actor2 + " " + computeBaconDistance(actor1, actor2);
+				retStrings.add(currentEntry);
+				System.out.println(currentEntry);
+			}
+			//System.out.println(actor1);
+		}
+		return retStrings;
 	}
 }

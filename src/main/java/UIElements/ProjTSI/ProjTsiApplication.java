@@ -67,10 +67,25 @@ public class ProjTsiApplication {
 		return filmRepository.findAll();
 	}
 
-	@GetMapping("/allAF")
-	public @ResponseBody Iterable<Actor> getAllAF() {
-		return actorRepository.findAllActorsFilms();
+	// Get all actors in a film, and all films from an actor
+	@GetMapping("/allAfromF/{filmID}")
+	public @ResponseBody Iterable<Actor> getActorFromFilm(@PathVariable("filmID") int fid) {
+		return actorRepository.findActorFromFilm(fid);
 	}
-
-
+	@GetMapping("/allFfromA/{actorID}")
+	public @ResponseBody Iterable<Film> getFilmFromActor(@PathVariable("actorID") int aid) {
+		return filmRepository.findFilmFromActor(aid);
+	}
+	@GetMapping("/allAfromRandomF")
+	public @ResponseBody Iterable<Actor> getActorFromRandomFilm() {
+		long x = filmRepository.count();
+		int fid = (int) (Math.random() * x);
+		return actorRepository.findActorFromFilm(fid);
+	}
+	@GetMapping("/allFfromRandomA")
+	public @ResponseBody Iterable<Film> getFilmFromRandomActor() {
+		long x = actorRepository.count();
+		int aid = (int) (Math.random() * x);
+		return filmRepository.findFilmFromActor(aid);
+	}
 }

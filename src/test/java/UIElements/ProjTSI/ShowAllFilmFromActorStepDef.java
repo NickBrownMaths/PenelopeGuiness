@@ -17,13 +17,6 @@ public class ShowAllFilmFromActorStepDef {
         this.context = ctxt ;
     }
 
-    //@Given("an actor exists with id {int}")
-    //public void an_actor_exists_with_id(int id) {
-    //    actorID = id;
-    //    this.filmRepository.findById(id)
-    //            .orElseThrow(() -> new ResourceAccessException("Actor with id does not exist " + actorID));
-    //}
-
     @When("I request all {int} films from that actor")
     public void I_request_all_films_from_that_actor(int expdFilms) {
         currentFilmList = context.filmRepository.findFilmFromActor(context.actorID);

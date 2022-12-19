@@ -40,6 +40,11 @@ public class ProjTsiApplication {
 		Optional<Actor> actor = actorRepository.findById(actorID);
 		return actor;
 	}
+	@GetMapping("/getFilm/{filmID}")
+	public @ResponseBody Optional<Film> getFilmByID(@PathVariable("filmID") int filmID) {
+		Optional<Film> film = filmRepository.findById(filmID);
+		return film;
+	}
 	@GetMapping("/findA")
 	public @ResponseBody Iterable<Actor> getActorsA() {
 		return actorRepository.findAllStartsA();

@@ -1,5 +1,4 @@
 Feature: Get all films from a specific actor
-
   Scenario Outline: getting all films from a specific actor from the db.
     Given an actor exists with id <actorID>
     When I request all <number> films from that actor

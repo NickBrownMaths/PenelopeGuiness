@@ -1,5 +1,4 @@
 Feature: Get a specific actor
-
   Scenario Outline: getting a specific actor from the db.
     Given an actor exists with id <actorID>
     When I request that actors details

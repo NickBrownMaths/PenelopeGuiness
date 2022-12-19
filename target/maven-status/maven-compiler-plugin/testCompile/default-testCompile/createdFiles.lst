@@ -1,0 +1,7 @@
+UIElements\ProjTSI\ScenarioContext.class
+UIElements\ProjTSI\CucumberContextConfig.class
+UIElements\ProjTSI\ShowSingleFilmStepDef.class
+UIElements\ProjTSI\ShowAllFilmFromActorStepDef.class
+UIElements\ProjTSI\ProjTsiApplicationTests.class
+UIElements\ProjTSI\ShowSingleActorStepDef.class
+UIElements\ProjTSI\RunCucumberTest.class

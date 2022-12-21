@@ -9,6 +9,13 @@ public class ActorTest {
         Actor testActor = new Actor("Joseph", "Bloggington");
         Assertions.assertEquals("Joseph",testActor.getFirstname());
         Assertions.assertEquals("Bloggington",testActor.getLastname());
+    }
+
+    @Test
+    public void testSettersGetters() {
+        Actor testActor = new Actor("Joseph", "Bloggington");
+        Assertions.assertEquals("Joseph",testActor.getFirstname());
+        Assertions.assertEquals("Bloggington",testActor.getLastname());
 
         testActor.setActorid(101);
         Assertions.assertEquals(101,testActor.getActorid());
@@ -18,4 +25,6 @@ public class ActorTest {
         Assertions.assertEquals("Josephine",testActor.getFirstname());
         Assertions.assertEquals("Bloggsworth",testActor.getLastname());
     }
+
+
 }

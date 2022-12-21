@@ -18,7 +18,7 @@ public class FilmActorId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FilmActorId that = (FilmActorId) o;
-        return actorid == that.actorid && filmid == that.filmid;
+        return actorid == that.getActorid() && filmid == that.getFilmid();
     }
 
     @Override

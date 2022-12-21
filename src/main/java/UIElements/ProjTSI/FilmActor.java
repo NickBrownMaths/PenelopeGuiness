@@ -17,7 +17,9 @@ public class FilmActor {
     @ManyToOne(fetch = FetchType.EAGER)
     Film filmid;
 
-    public FilmActor() {}
+    public FilmActor() {//
+        // Requires an empty constructor.
+    }
 
     public Actor getActor() {
         return actorid;

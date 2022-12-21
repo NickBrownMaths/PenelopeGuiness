@@ -13,5 +13,9 @@ public class ActorTest {
         testActor.setActorid(101);
         Assertions.assertEquals(101,testActor.getActorid());
 
+        testActor.setFirstname("Josephine");
+        testActor.setLastname("Bloggsworth");
+        Assertions.assertEquals("Josephine",testActor.getFirstname());
+        Assertions.assertEquals("Bloggsworth",testActor.getLastname());
     }
 }

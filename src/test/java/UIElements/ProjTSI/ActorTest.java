@@ -10,7 +10,6 @@ public class ActorTest {
         Assertions.assertEquals("Joseph",testActor.getFirstname());
         Assertions.assertEquals("Bloggington",testActor.getLastname());
 
-
         testActor.setActorid(101);
         Assertions.assertEquals(101,testActor.getActorid());
 

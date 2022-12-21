@@ -105,12 +105,12 @@ public class ProjTsiApplication {
 
 		// We need a list of films from the first actor and an empty list of actors
 		Iterable<Film> searchFilms = filmRepository.findFilmFromActor(aid1);
-		Iterable<Actor> searchActors = Collections.emptySet();
+		Iterable<Actor> searchActors ;
 
 		boolean finished = false;
-		int current_distance = 0;
+		int currentDistance = 0;
 		while (!finished) {
-			++ current_distance;
+			++ currentDistance;
 			// find all actors in the film list
 			searchActors = findAllActorsFromMultiFilms(searchFilms) ;
 
@@ -118,7 +118,7 @@ public class ProjTsiApplication {
 			for (Actor a : searchActors) {
 				if (a.getActorid() == aid2) {
 					finished = true;
-					distance = current_distance;
+					distance = currentDistance;
 				}
 			}
 			// If we didn't find the target actor, remake the film list
@@ -127,7 +127,7 @@ public class ProjTsiApplication {
 			}
 
 			// Condition to ensure while is exited
-			if (current_distance > 50) {
+			if (currentDistance > 50) {
 				finished = true;
 				distance = -1 ;
 			}
@@ -158,9 +158,7 @@ public class ProjTsiApplication {
 			for (int actor2 = 1 ; actor2 < actor1 ; ++actor2) {
 				String currentEntry = "" + actor1 + " " + actor2 + " " + computeBaconDistance(actor1, actor2);
 				retStrings.add(currentEntry);
-				System.out.println(currentEntry);
 			}
-			//System.out.println(actor1);
 		}
 		return retStrings;
 	}

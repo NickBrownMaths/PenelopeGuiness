@@ -7,7 +7,7 @@ public class FilmActorIdTest {
 
     @Test
     public void testEmptyConstructor() {
-        FilmActorId testFilmActorId = new FilmActorId(44, 55);
+        FilmActorId testFilmActorId = new FilmActorId();
         Assertions.assertNotNull(testFilmActorId);
     }
 
@@ -21,13 +21,15 @@ public class FilmActorIdTest {
     @Test
     public void testEquals() {
         FilmActorId testFilmActorId1 = new FilmActorId(44, 55);
-        FilmActorId testFilmActorId2 = new FilmActorId(44, 66);
+        FilmActorId testFilmActorId2 = new FilmActorId(44, 55);
         FilmActorId testFilmActorId3 = new FilmActorId(33, 55);
         FilmActorId testFilmActorId4 = new FilmActorId(33, 66);
-        Assertions.assertTrue(testFilmActorId1 == testFilmActorId1);
-        Assertions.assertFalse(testFilmActorId1 == testFilmActorId2);
-        Assertions.assertFalse(testFilmActorId1 == testFilmActorId3);
-        Assertions.assertFalse(testFilmActorId1 == testFilmActorId4);
+        FilmActorId testFilmActorId5 = new FilmActorId(33, 55);
+        Assertions.assertTrue(testFilmActorId1.equals(testFilmActorId1));
+        Assertions.assertTrue(testFilmActorId1.equals(testFilmActorId2));
+        Assertions.assertFalse(testFilmActorId1.equals(testFilmActorId3));
+        Assertions.assertFalse(testFilmActorId1.equals(testFilmActorId4));
+        Assertions.assertFalse(testFilmActorId1.equals(testFilmActorId5));
     }
 
     @Test

@@ -25,4 +25,12 @@ public class FilmActorId implements Serializable {
     public int hashCode() {
         return Objects.hash(actorid, filmid);
     }
+
+    public int getActorid() {
+        return actorid;
+    }
+
+    public int getFilmid() {
+        return filmid;
+    }
 }

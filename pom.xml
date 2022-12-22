@@ -130,23 +130,6 @@
 		</dependency>
 
 
-
-
-
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-		</dependency>
-
-
-
-		<dependency>
-			<groupId>com.amazonaws</groupId>
-			<artifactId>aws-java-sdk-secretsmanager</artifactId>
-			<version>1.11.549</version>
-		</dependency>
-
-
 </dependencies>
 	<build>
 		<plugins>

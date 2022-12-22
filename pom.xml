@@ -161,9 +161,9 @@
 				<version>0.8.8</version>
 				<configuration>
 					<excludes>
-						<exclude>UIElements.ProjTSI.ProjTsiApplication</exclude>
-						<exclude>UIElements.ProjTSI.AppConfig</exclude>
-						<exclude>UIElements.ProjTSI.AwsSecrets</exclude>
+						<exclude>*ProjTsiApplication*</exclude>
+						<exclude>*AppConfig*</exclude>
+						<exclude>*AwsSecrets*</exclude>
 					</excludes>
 				</configuration>
 				<executions>

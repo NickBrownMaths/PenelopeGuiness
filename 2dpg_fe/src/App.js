@@ -7,7 +7,7 @@ import Initial from './Initial.js';
 import Target from './Target';
 import Counter from './Counter';
 import Current from './Current';
-import Button from './ItemButton';
+import HomeButton from './HomeButton';
 import GameButtonList from './GameButtonList';
 
 import { useEffect, useState } from 'react';
@@ -32,28 +32,28 @@ function generalCamelCase(str) {
 
 function App() {
   const fetcher = () => {
-    fetch("http://localhost:8080/home/getActor/" + initialID)
+    fetch("http://ec2-18-133-240-82.eu-west-2.compute.amazonaws.com:8085/home/getActor/" + initialID)
       .then((response) => response.json())
       .then((actor) => setInitialActor(actor));
-    fetch("http://localhost:8080/home/getActor/" + targetID)
+    fetch("http://ec2-18-133-240-82.eu-west-2.compute.amazonaws.com:8085/home/getActor/" + targetID)
       .then((response) => response.json())
       .then((actor) => setTargetActor(actor));
 
     if (isActor) {
       console.log("Fetching an actor")
-      fetch("http://localhost:8080/home/getActor/" + currentID)
+      fetch("http://ec2-18-133-240-82.eu-west-2.compute.amazonaws.com:8085/home/getActor/" + currentID)
         .then((response) => response.json())
         .then((actor) => setCurrentActor(actor));
-      fetch("http://localhost:8080/home/allFfromA/" + currentID)
+      fetch("http://ec2-18-133-240-82.eu-west-2.compute.amazonaws.com:8085/home/allFfromA/" + currentID)
         .then((response) => response.json())
         .then((list) => setFilmList(list));
 
     } else {
       console.log("Fetching an Film")
-      fetch("http://localhost:8080/home/getFilm/" + currentID)
+      fetch("http://ec2-18-133-240-82.eu-west-2.compute.amazonaws.com:8085/home/getFilm/" + currentID)
         .then((response) => response.json())
         .then((film) => setCurrentFilm(film));
-      fetch("http://localhost:8080/home/allAfromF/" + currentID)
+      fetch("http://ec2-18-133-240-82.eu-west-2.compute.amazonaws.com:8085/home/allAfromF/" + currentID)
         .then((response) => response.json())
         .then((list) => setActorList(list));
     }
@@ -72,7 +72,7 @@ function App() {
   const [actorList, setActorList] = useState(0);
 
   // Fetch requests
-  useEffect(() => { fetcher(); }, [currentID])
+  useEffect(() => { fetcher(); }, [currentID, initialID, targetID, isActor])
 
   // Make strings for the name of the current actor/film
   let currentName;
@@ -102,7 +102,13 @@ function App() {
         currentFilm={currentFilm}
         filmList={filmList}
         actorList={actorList}
-        numButs={9} />
+      />
+      <HomeButton
+        setIsActor={setIsActor}
+        setNumSteps={setNumSteps}
+        setInitialID={setInitialID}
+        setTargetID={setTargetID}
+      />
     </div>
   );
 }

@@ -28,6 +28,13 @@
   animation-iteration-count: infinite;
 }
 
+.HomeBut {
+  background-color: #C8DEF9;
+  color: #133758;
+  font-size: large;
+  border-radius: 12px;
+}
+
 @keyframes shake {
   10%, 90% {
     transform: translate3d(0, -1px, 0);

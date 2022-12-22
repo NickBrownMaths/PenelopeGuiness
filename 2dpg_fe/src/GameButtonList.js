@@ -4,10 +4,11 @@ function GameButtonList(props) {
   const retList = [];
   if (props.currentIsActor) {
     for (let i = 0; i < props.filmList.length; i++) {
-      if (props.currentID == props.targetID) {}
+      if (props.currentID == props.targetID) { }
       else {
         retList.push(
           <ItemButton key={3 * i} text={props.filmList[i].title}
+            buttonClassName='ItemButton'
             onClick={
               () => {
                 props.setIsActor(props.currentIsActor ? false : true)
@@ -25,6 +26,7 @@ function GameButtonList(props) {
     for (let i = 0; i < props.actorList.length; i++) {
       retList.push(
         <ItemButton key={3 * i} text={props.actorList[i].firstname + " " + props.actorList[i].lastname}
+          buttonClassName='ItemButton'
           onClick={
             () => {
               props.setIsActor(props.currentIsActor ? false : true)

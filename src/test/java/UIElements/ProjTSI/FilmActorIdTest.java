@@ -43,6 +43,7 @@ public class FilmActorIdTest {
     public void testEqualsIfNull() {
         FilmActorId testFilmActorId1 = new FilmActorId(44, 55);
         Assertions.assertNotEquals(testFilmActorId1, null);
+        Assertions.assertNotEquals(null, testFilmActorId1);
     }
 
 }

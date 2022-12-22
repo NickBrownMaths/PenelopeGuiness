@@ -18,9 +18,13 @@ public class ProjTsiApplicationTest extends ProjTsiApplication {
         Assertions.assertNotNull(App);
     }
 
+    @Test
     public void testConstructor() {
         ProjTsiApplication App = new ProjTsiApplication(testAR);
         Assertions.assertNotNull(App);
     }
+
+
+
 
 }

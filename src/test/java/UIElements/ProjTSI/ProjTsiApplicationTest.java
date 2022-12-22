@@ -12,6 +12,9 @@ public class ProjTsiApplicationTest extends ProjTsiApplication {
     @Mock
     private ActorRepository testAR;
 
+    @Mock
+    private Iterable<Actor> testActorIter;
+
     @Test
     public void testDefaultConstructor() {
         ProjTsiApplication App = new ProjTsiApplication();
@@ -24,7 +27,7 @@ public class ProjTsiApplicationTest extends ProjTsiApplication {
         Assertions.assertNotNull(App);
     }
 
-
-
-
+    @Test
+    public void testGetAllActors(){
+    }
 }

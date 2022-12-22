@@ -12,6 +12,12 @@ public class ActorTest {
     }
 
     @Test
+    public void testDefaultConstructor() {
+        Actor testActor = new Actor();
+        Assertions.assertNotNull(testActor);
+    }
+
+    @Test
     public void testSettersGetters() {
         Actor testActor = new Actor("Joseph", "Bloggington");
         Assertions.assertEquals("Joseph",testActor.getFirstname());

@@ -22,6 +22,7 @@ public class ProjTsiApplication {
 	@Autowired
 	private FilmActorRepository filmActorRepository ;
 
+	public ProjTsiApplication(){}
 	public ProjTsiApplication(ActorRepository ar) {
 		actorRepository = ar;
 	}

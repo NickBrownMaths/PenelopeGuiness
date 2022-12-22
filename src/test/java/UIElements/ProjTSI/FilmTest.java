@@ -12,6 +12,12 @@ public class FilmTest {
     }
 
     @Test
+    public void testDefaultConstructor() {
+        Film testFilm = new Film();
+        Assertions.assertNotNull(testFilm);
+    }
+
+    @Test
     public void testSetterGetters() {
         Film testFilm = new Film("AGoodFilm", 101);
         testFilm.setFilmid(99);

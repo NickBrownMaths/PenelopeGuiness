@@ -39,4 +39,10 @@ public class FilmActorIdTest {
         Assertions.assertEquals(testFilmActorId1.hashCode(), testFilmActorId1.hashCode());
     }
 
+    @Test
+    public void testEqualsIfNull() {
+        FilmActorId testFilmActorId1 = new FilmActorId(44, 55);
+        Assertions.assertNotEquals(testFilmActorId1, null);
+    }
+
 }

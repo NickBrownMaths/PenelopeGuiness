@@ -46,4 +46,14 @@ public class FilmActorIdTest {
         Assertions.assertNotEquals(null, testFilmActorId1);
     }
 
+    @Test
+    public void testEqualsIfWrongClass() {
+        FilmActorId testFilmActorId1 = new FilmActorId(44, 55);
+        FilmActor testFilmActor = new FilmActor();
+        Assertions.assertNotEquals(testFilmActorId1, null);
+        Assertions.assertNotEquals(null, testFilmActorId1);
+        Assertions.assertNotEquals(testFilmActor, testFilmActorId1);
+        Assertions.assertNotEquals(testFilmActorId1, testFilmActor);
+    }
+
 }
